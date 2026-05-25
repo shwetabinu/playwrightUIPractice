@@ -1,6 +1,5 @@
-const expect = require('@playwright/test')
+exports.ProductPage =class ProductPage {
 
-exports.ProductPage = class ProductPage {
   constructor(page) {
     this.page = page;
     this.ProductPageTitle = page.getByText('Products');

@@ -1,13 +1,6 @@
-import {test, expect} from '@playwright/test';
-import { ProductPage } from '..pages/ProductPage';
-import { LoginPage } from '..pages/LoginPage';
-import { CartPage } from '..pages/CartPage';
-import { CheckoutPage } from '..pages/CheckoutPage';
-import { CheckoutOverviewPage } from '..pages/CheckoutOverviewPage';
-import { OrderConfirmation } from '..pages/OrderConfirmation';
+import { test, expect } from '@playwright/test';
 
 test.describe('End to End Tests', () => {
-  let productPage;
   let loginPage;
   let cartPage;
   let checkoutPage;
@@ -15,7 +8,6 @@ test.describe('End to End Tests', () => {
   let orderConfirmationPage;
 
   test.beforeEach(async ({ page }) => {
-    productPage = new ProductPage(page);
     loginPage = new LoginPage(page);
     cartPage = new CartPage(page);
     checkoutPage = new CheckoutPage(page);
@@ -24,14 +16,11 @@ test.describe('End to End Tests', () => {
 
     await loginPage.goto();
     await loginPage.login('standard_user', 'secret_sauce');
-   // await productPage.clickOnAddtoCart('Sauce Labs Backpack');
-    
   });
 
-  test('should be able to place an order', async () => {
-    // Add assertions to verify that the user can place an order successfully
-   // await productPage.clickOnAddtoCart('Sauce Labs Backpack');
-   await productPage.clickonShoppingCart();
+  test('should be able to place an order', async ({ page }) => {
+    await page.click('#add-to-cart-sauce-labs-backpack');
+    await page.click('.shopping_cart_link');
 //    await cartPage.continueShopping();
 //     await productPage.clickOnAddtoCart('Sauce Labs Bike Light');
     await cartPage.checkout();
