@@ -46,10 +46,8 @@ test.describe('End to End Tests', () => {
     await checkoutOverviewPage.finishCheckout();
     await orderConfirmationPage.waitForConfirmation();
     await expect(orderConfirmationPage.confirmationMessage).toBeVisible();
-
-    
-
   });
 
+  
 
 }   );
