@@ -1,6 +1,7 @@
 import test, { expect } from '@playwright/test';
-import { ProductPage } from 'pages/ProductPage';
-import { LoginPage } from 'pages/LoginPage';
+//  Import with explicit .js extension for module resolution
+import { ProductPage } from '../pages/ProductPage.js';
+import { LoginPage } from '../pages/LoginPage.js';
 
 test.describe('Product Page Tests', () => {
   let productPage;
